@@ -1,0 +1,976 @@
+USE siva
+--Data Wrangling
+--heartrate_seconds_merged
+
+SELECT TOP 5 *
+FROM heartrate_seconds_merged;
+
+--changing ID column type VARCHAR to BIg INT
+
+ALTER TABLE heartrate_seconds_merged
+ALTER COLUMN id BIGINT;
+
+UPDATE heartrate_seconds_merged
+SET id = CAST(id AS BIGINT);
+
+--changing Time column type VARCHAR to TiMESTAMP
+ALTER TABLE heartrate_seconds_merged
+ADD	temp_column DATETIME;
+
+UPDATE heartrate_seconds_merged
+SET temp_column = CONVERT(DATETIME, Time);
+
+ALTER TABLE heartrate_seconds_merged
+DROP COLUMN Time;
+
+EXEC sp_rename 'heartrate_seconds_merged.temp_column','Time';
+
+--Checking rows with null values in id column
+
+SELECT COUNT(*) AS id_null
+FROM heartrate_seconds_merged
+WHERE Id is null;
+
+--[dbo].[dailyActivity_merged]
+--Checking rows with null values in id column
+--data types are fine
+SELECT TOP 5 *
+FROM dailyActivity_merged;
+
+SELECT COUNT(*) AS id_null
+FROM dailyActivity_merged
+WHERE Id is null;
+
+--[dbo].[dailyCalories_merged]
+--data types are fine
+--Checking rows with null values in id column
+SELECT TOP 5 *
+FROM dailyCalories_merged;
+
+SELECT COUNT(*) AS id_null
+FROM dailyCalories_merged
+WHERE Id is null;
+
+
+--[dbo].[dailyIntensities_merged]
+--data types are fine
+--Checking rows with null values in id column
+
+SELECT TOP 5 *
+FROM dailyIntensities_merged;
+
+SELECT COUNT(*) AS id_null
+FROM dailyIntensities_merged
+WHERE Id is null;
+
+--[dbo].[dailySteps_merged]
+--data types are fine
+--Checking rows with null values in id column
+SELECT TOP 5 *
+FROM dailySteps_merged;
+
+SELECT COUNT(*) AS id_null
+FROM dailySteps_merged
+WHERE Id is null;
+
+--[dbo].[hourlyCalories_merged]
+SELECT TOP 5 *
+FROM hourlyCalories_merged;
+--CHANGE id column datatype varchar to BIGINT
+ALTER TABLE hourlyCalories_merged
+ALTER COLUMN id BIGINT;
+
+UPDATE hourlyCalories_merged
+SET id = CAST(id AS BIGINT);
+--data types are fine now
+--Checking rows with null values in id column
+SELECT COUNT(*) AS id_null
+FROM hourlyCalories_merged
+WHERE Id is null;
+
+--[dbo].[hourlyIntensities_merged]
+SELECT TOP 5 *
+FROM hourlyCalories_merged;
+--CHANGE id column datatype varchar to BIGINT
+ALTER TABLE hourlyIntensities_merged
+ALTER COLUMN id BIGINT;
+
+UPDATE hourlyIntensities_merged
+SET id = CAST(id AS BIGINT);
+--data types are fine now
+--Checking rows with null values in id column
+SELECT COUNT(*) AS id_null
+FROM hourlyIntensities_merged
+WHERE Id is null;
+
+
+--[dbo].[hourlySteps_merged]
+SELECT TOP 5 *
+FROM hourlySteps_merged;
+--CHANGE id column datatype varchar to BIGINT
+ALTER TABLE hourlySteps_merged
+ALTER COLUMN id BIGINT;
+
+UPDATE hourlySteps_merged
+SET id = CAST(id AS BIGINT);
+--data types are fine now
+--Checking rows with null values in id column
+SELECT COUNT(*) AS id_null
+FROM hourlySteps_merged
+WHERE Id is null;
+
+--[dbo].[minuteCaloriesNarrow_merged]
+SELECT TOP 5 *
+FROM minuteCaloriesNarrow_merged;
+--CHANGE id column datatype varchar to BIGINT
+ALTER TABLE minuteCaloriesNarrow_merged
+ALTER COLUMN id BIGINT;
+
+UPDATE minuteCaloriesNarrow_merged
+SET id = CAST(id AS BIGINT);
+--data types are fine now
+--Checking rows with null values in id column
+SELECT COUNT(*) AS id_null
+FROM minuteCaloriesNarrow_merged
+WHERE Id is null;
+
+--[dbo].[minuteCaloriesWide_merged]
+SELECT TOP 5 *
+FROM minuteCaloriesWide_merged;
+--CHANGE id column datatype varchar to BIGINT
+ALTER TABLE minuteCaloriesWide_merged
+ALTER COLUMN id BIGINT;
+
+UPDATE minuteCaloriesWide_merged
+SET id = CAST(id AS BIGINT);
+--data types are fine now
+--Checking rows with null values in id column
+SELECT COUNT(*) AS id_null
+FROM minuteCaloriesWide_merged
+WHERE Id is null;
+
+
+--[dbo].[minuteIntensitiesNarrow_merged]
+SELECT TOP 5 *
+FROM minuteIntensitiesNarrow_merged;
+--CHANGE id column datatype varchar to BIGINT
+ALTER TABLE minuteIntensitiesNarrow_merged
+ALTER COLUMN id BIGINT;
+
+UPDATE minuteIntensitiesNarrow_merged
+SET id = CAST(id AS BIGINT);
+--data types are fine now
+--Checking rows with null values in id column
+SELECT COUNT(*) AS id_null
+FROM minuteIntensitiesNarrow_merged
+WHERE Id is null;
+
+--[dbo].[minuteIntensitiesWide_merged]
+SELECT TOP 5 *
+FROM minuteIntensitiesWide_merged;
+--CHANGE id column datatype varchar to BIGINT
+ALTER TABLE minuteIntensitiesWide_merged
+ALTER COLUMN id BIGINT;
+
+UPDATE minuteIntensitiesWide_merged
+SET id = CAST(id AS BIGINT);
+--data types are fine now
+--Checking rows with null values in id column
+SELECT COUNT(*) AS id_null
+FROM minuteIntensitiesWide_merged
+WHERE Id is null;
+
+--[dbo].[minuteMETsNarrow_merged]
+SELECT TOP 5 *
+FROM minuteMETsNarrow_merged;
+--CHANGE id column datatype varchar to BIGINT
+ALTER TABLE minuteMETsNarrow_merged
+ALTER COLUMN id BIGINT;
+
+UPDATE minuteMETsNarrow_merged
+SET id = CAST(id AS BIGINT);
+--data types are fine now
+--Checking rows with null values in id column
+SELECT COUNT(*) AS id_null
+FROM minuteMETsNarrow_merged
+WHERE Id is null;
+
+--[dbo].[minuteSleep_merged]
+SELECT TOP 5 *
+FROM minuteSleep_merged;
+--CHANGE id column datatype varchar to BIGINT
+ALTER TABLE minuteSleep_merged
+ALTER COLUMN id BIGINT;
+
+UPDATE minuteSleep_merged
+SET id = CAST(id AS BIGINT);
+--data types are fine now
+--Checking rows with null values in id column
+SELECT COUNT(*) AS id_null
+FROM minuteSleep_merged
+WHERE Id is null;
+
+--[dbo].[minuteStepsNarrow_merged]
+SELECT TOP 5 *
+FROM minuteStepsNarrow_merged;
+--CHANGE id column datatype varchar to BIGINT
+ALTER TABLE minuteStepsNarrow_merged
+ALTER COLUMN id BIGINT;
+
+UPDATE minuteStepsNarrow_merged
+SET id = CAST(id AS BIGINT);
+--data types are fine now
+--Checking rows with null values in id column
+SELECT COUNT(*) AS id_null
+FROM minuteStepsNarrow_merged
+WHERE Id is null;
+
+--[dbo].[minuteStepsWide_merged]
+SELECT TOP 5 *
+FROM minuteStepsWide_merged;
+--CHANGE id column datatype varchar to BIGINT
+ALTER TABLE minuteStepsWide_merged
+ALTER COLUMN id BIGINT;
+
+UPDATE minuteStepsWide_merged
+SET id = CAST(id AS BIGINT);
+--data types are fine now
+--Checking rows with null values in id column
+SELECT COUNT(*) AS id_null
+FROM minuteStepsWide_merged
+WHERE Id is null;
+
+--[dbo].[sleepDay_merged]
+SELECT TOP 5 *
+FROM sleepDay_merged;
+--data types are fine 
+--Checking rows with null values in id column
+SELECT COUNT(*) AS id_null
+FROM sleepDay_merged
+WHERE Id is null;
+
+
+--[dbo].[weightLogInfo_merged]
+SELECT TOP 5 *
+FROM weightLogInfo_merged;
+--data types are fine 
+--Checking rows with null values in id column
+SELECT COUNT(*) AS id_null
+FROM weightLogInfo_merged
+WHERE Id is null;
+
+
+SELECT TOP 10 *
+FROM [dbo].[dailyActivity_merged];
+
+UPDATE [dailyActivity_merged]
+SET TotalDistance= ROUND(TotalDistance, 2),
+	TotalSteps = ROUND(TotalSteps, 2),
+	TrackerDistance = ROUND(TrackerDistance, 2),
+	VeryActiveDistance =ROUND(VeryActiveDistance, 2),
+	ModeratelyActiveDistance =ROUND(ModeratelyActiveDistance, 2),
+	LightActiveDistance = ROUND(LightActiveDistance, 2)
+
+
+ALTER TABLE [minuteIntensitiesNarrow_merged]
+ADD DateValue DATE,
+    TimeValue TIME;
+
+UPDATE [minuteIntensitiesNarrow_merged]
+SET DateValue = CAST(ActivityMinute AS DATE),
+    TimeValue = CAST(ActivityMinute AS TIME);
+
+ALTER TABLE [minuteIntensitiesNarrow_merged]
+DROP COLUMN ActivityMinute;
+
+ALTER TABLE [minuteSleep_merged]
+ADD DateValue DATE,
+    TimeValue TIME;
+
+UPDATE [minuteSleep_merged]
+SET DateValue = CAST(date AS DATE),
+    TimeValue = CAST(date AS TIME);
+
+ALTER TABLE [minuteSleep_merged]
+DROP COLUMN date
+
+DELETE FROM  [minuteSleep_merged]
+WHERE date is NULL;
+
+
+
+--creating dayofweek column
+ALTER TABLE [dailyActivity_merged]
+ADD DayOfWeek VARCHAR(20)
+
+UPDATE [dailyActivity_merged]
+SET DayOfWeek = DATENAME(DW,ActivityDate);
+
+SELECT id,COUNT(ActivityDate) AS date_count
+FROM [dbo].[dailyActivity_merged]
+GROUP BY Id
+--ORDER BY ActivityDate DESC;
+
+SELECT TOP 10 *
+FROM [dbo].[dailyCalories_merged];
+--creating dayofweek column
+ALTER TABLE [dailyCalories_merged]
+ADD DayOfWeek VARCHAR(20)
+
+UPDATE [dailyCalories_merged]
+SET DayOfWeek = DATENAME(DW,ActivityDay);
+
+
+SELECT TOP 10 *
+FROM [dbo].[dailyCalories_merged]
+ORDER BY ActivityDay desc;
+
+SELECT DISTINCT CAL.Id,CAL.Calories AS calcalories,ACT.Calories AS actcalories,CAL.ActivityDay AS caldate,ACT.ActivityDate AS actdate
+FROM dailyCalories_merged CAL 
+INNER JOIN dailyActivity_merged ACT 
+ON CAL.Id=ACT.Id
+ORDER BY caldate,actdate;
+--conclusion these two table calories values are same
+SELECT DISTINCT TOP 10  *
+FROM [dbo].[dailyIntensities_merged];
+
+ALTER TABLE [dailyIntensities_merged]
+ADD DayOfWeek VARCHAR(20)
+
+UPDATE [dailyIntensities_merged]
+SET DayOfWeek = DATENAME(DW,ActivityDay);
+
+UPDATE [dailyIntensities_merged]
+SET LightActiveDistance=ROUND(LightActiveDistance,2),
+	ModeratelyActiveDistance=ROUND(ModeratelyActiveDistance,2),
+	VeryActiveDistance=ROUND(VeryActiveDistance,2);
+
+SELECT id,COUNT(ActivityDay) AS days_person
+FROM [dbo].[dailyIntensities_merged]
+GROUP BY Id;
+
+SELECT TOP 10 *
+FROM [dbo].[dailySteps_merged];
+
+ALTER TABLE [dailySteps_merged]
+ADD DayOfWeek VARCHAR(20)
+
+UPDATE [dailySteps_merged]
+SET DayOfWeek=DATENAME(DW,ActivityDay);
+
+SELECT TOP 10 *
+FROM [dbo].[heartrate_seconds_merged];
+
+ALTER TABLE [heartrate_seconds_merged]
+ADD DateValue DATE,
+    TimeValue TIME
+
+UPDATE [heartrate_seconds_merged]
+SET DateValue = CAST(Time AS DATE),
+    TimeValue = CAST(Time AS TIME);
+
+ALTER TABLE [heartrate_seconds_merged]
+DROP COLUMN Time;
+
+ALTER TABLE [heartrate_seconds_merged]
+ADD DayOfWeek VARCHAR(20);
+
+UPDATE [heartrate_seconds_merged]
+SET DayOfWeek=DATENAME(dw,DateValue);
+
+
+SELECT TOP 10 *
+FROM [dbo].[hourlyCalories_merged];
+
+ALTER TABLE [hourlyCalories_merged]
+ADD DateValue DATE,
+    TimeValue TIME;
+
+UPDATE [hourlyCalories_merged]
+SET DateValue = CAST(ActivityHour AS DATE),
+    TimeValue = CAST(ActivityHour AS TIME);
+
+ALTER TABLE [hourlyCalories_merged]
+DROP COLUMN ActivityHour;
+
+SELECT TOP 10 *
+FROM [dbo].[hourlyIntensities_merged];
+
+ALTER TABLE [hourlyIntensities_merged]
+ADD DateValue DATE,
+    TimeValue TIME;
+
+UPDATE [hourlyIntensities_merged]
+SET DateValue = CAST(ActivityHour AS DATE),
+    TimeValue = CAST(ActivityHour AS TIME);
+
+ALTER TABLE [hourlyIntensities_merged]
+DROP COLUMN ActivityHour;
+
+UPDATE [hourlyIntensities_merged]
+SET AverageIntensity=ROUND(AverageIntensity,2);
+
+SELECT TOP 10 *
+FROM [dbo].[hourlySteps_merged];
+
+ALTER TABLE [hourlySteps_merged]
+ADD DateValue DATE,
+    TimeValue TIME;
+
+UPDATE [hourlySteps_merged]
+SET DateValue = CAST(ActivityHour AS DATE),
+    TimeValue = CAST(ActivityHour AS TIME);
+
+ALTER TABLE [hourlySteps_merged]
+DROP COLUMN ActivityHour;
+
+SELECT TOP 10 *
+FROM [dbo].[minuteCaloriesNarrow_merged];
+
+ALTER TABLE [minuteCaloriesNarrow_merged]
+ADD DateValue DATE,
+    TimeValue TIME;
+
+UPDATE [minuteCaloriesNarrow_merged]
+SET DateValue = CAST(ActivityMinute AS DATE),
+    TimeValue = CAST(ActivityMinute AS TIME);
+
+ALTER TABLE [minuteCaloriesNarrow_merged]
+DROP COLUMN ActivityMinute;
+
+SELECT TOP 10 *
+FROM [dbo].[minuteCaloriesWide_merged];
+
+SELECT  *
+FROM [dbo].[minuteIntensitiesNarrow_merged];
+
+ALTER TABLE [minuteCaloriesNarrow_merged]
+ADD DateValue DATE,
+    TimeValue TIME;
+
+UPDATE [minuteCaloriesNarrow_merged]
+SET DateValue = CAST(ActivityMinute AS DATE),
+    TimeValue = CAST(ActivityMinute AS TIME);
+
+ALTER TABLE [minuteCaloriesNarrow_merged]
+DROP COLUMN ActivityMinute;
+
+SELECT TOP 10 *
+FROM [dbo].[minuteIntensitiesWide_merged];
+
+SELECT TOP 10 *
+FROM [dbo].[minuteMETsNarrow_merged];
+
+SELECT TOP 10 *
+FROM [dbo].[minuteSleep_merged];
+
+
+SELECT *
+FROM [dbo].[minuteStepsNarrow_merged];
+
+ALTER TABLE [minuteStepsNarrow_merged]
+ADD DateValue DATE,
+    TimeValue TIME;
+
+UPDATE [minuteStepsNarrow_merged]
+SET DateValue = CAST(ActivityMinute AS DATE),
+    TimeValue = CAST(ActivityMinute AS TIME);
+
+ALTER TABLE [minuteStepsNarrow_merged]
+DROP COLUMN ActivityMinute;
+
+
+SELECT TOP 10 *
+FROM [dbo].[minuteStepsWide_merged];
+
+
+SELECT TOP 10 *
+FROM [dbo].[sleepDay_merged];
+
+ALTER TABLE [sleepDay_merged]
+ADD DateValue DATE,
+    TimeValue TIME;
+
+UPDATE [sleepDay_merged]
+SET DateValue = CAST(SleepDay AS DATE),
+    TimeValue = CAST(SleepDay AS TIME);
+
+ALTER TABLE [sleepDay_merged]
+DROP COLUMN SleepDay;
+
+
+SELECT TOP 10 *
+FROM [dbo].[weightLogInfo_merged]; 
+
+UPDATE [weightLogInfo_merged]
+SET WeightKg=ROUND(WeightKg,2),
+	WeightPounds=ROUND(WeightPounds,2),
+	BMI=ROUND(BMI,2)
+
+ALTER TABLE [weightLogInfo_merged]
+ADD DateValue DATE,
+    TimeValue TIME;
+
+UPDATE [weightLogInfo_merged]
+SET DateValue = CAST(Date AS DATE),
+    TimeValue = CAST(Date AS TIME);
+
+ALTER TABLE [weightLogInfo_merged]
+DROP COLUMN Date;
+
+UPDATE heartrate_seconds_merged
+SET Value = CAST(Value AS bigint);
+
+ALTER TABLE sleepDay_merged
+ADD DayOfWeek varchar(20);
+
+UPDATE sleepDay_merged
+SET DayOfWeek=DATENAME(dw,DateValue);
+
+ALTER TABLE [minuteMETsNarrow_merged]
+ADD DateValue DATE,
+    TimeValue TIME;
+
+UPDATE [minuteMETsNarrow_merged]
+SET DateValue = CAST(ActivityMinute AS DATE),
+    TimeValue = CAST(ActivityMinute AS TIME);
+
+ALTER TABLE [minuteMETsNarrow_merged]
+DROP COLUMN ActivityMinute
+
+
+ ---------------------------------------------------------------------------------------------
+ Exploratory Data Analysis
+ ------------------------------------------------------------------------------------------------------------------------------
+--activity, sleep, stress,menstrual cycle, and mindfulness habits. 
+--analyze smart device usage data
+--What are some trends in smart device usage?
+
+
+---------------------------------------------------
+
+SELECT  DayOfWeek,
+		SUM(VeryActiveDistance) VeryActiveDistance,
+		SUM(ModeratelyActiveDistance) ModeratelyActiveDistance,
+		SUM(LightActiveDistance) LightActiveDistance
+FROM [dbo].[dailyActivity_merged]
+GROUP BY DayOfWeek
+ORDER BY VeryActiveDistance;
+
+
+SELECT  DayOfWeek,
+		SUM(VeryActiveMinutes) VeryActiveMinutes,
+		SUM(FairlyActiveMinutes) FairlyActiveMinutes,
+		SUM(LightlyActiveMinutes) LightActiveMinutes
+FROM [dbo].[dailyActivity_merged]
+GROUP BY DayOfWeek
+ORDER BY LightActiveMinutes;
+
+--The results were plotted.
+--The graph shows people are More active on Tuesday and less active on sunday for exercise.
+
+SELECT  DayOfWeek,
+		SUM(Calories) Calories
+FROM [dbo].[dailyActivity_merged]
+GROUP BY DayOfWeek
+ORDER BY Calories;
+
+--The results were plotted.
+--People burned more calories on Tuesday and less on Sunday
+
+
+SELECT DayOfWeek,SUM(SedentaryMinutes) SedentaryMinutes
+FROM [dbo].[dailyActivity_merged]
+GROUP BY DayOfWeek
+ORDER BY SedentaryMinutes;
+
+--People were sitting more on Tuesday less on Saturday and Sunday
+
+SELECT  DayOfWeek,
+		SUM(TotalSteps) TotalSteps
+FROM [dbo].[dailyActivity_merged]
+GROUP BY DayOfWeek
+ORDER BY TotalSteps;
+
+--People were walked alot Tuesday and less on sunday
+
+
+
+
+SELECT DayOfWeek, AVG(Value) AS heart_rate
+FROM [dbo].[heartrate_seconds_merged] H
+group by DayOfWeek
+ORDER BY heart_rate;
+
+
+
+***
+SELECT DayOfWeek, AVG(TotalMinutesAsleep) TotalMinutesAsleep
+FROM sleepDay_merged
+GROUP BY DayOfWeek
+ORDER BY TotalMinutesAsleep;
+
+SELECT DayOfWeek, AVG(TotalTimeInBed) TotalTimeInBed
+FROM sleepDay_merged
+GROUP BY DayOfWeek
+ORDER BY TotalTimeInBed;
+
+SELECT DayOfWeek,AVG(TotalSleepRecords) AS TotalSleepRecords
+FROM sleepDay_merged
+GROUP BY DayOfWeek;
+***
+-------
+
+SELECT Healthy_sleep_percent
+FROM [dbo].[sleepDay_merged]
+
+ALTER TABLE [dbo].[sleepDay_merged]
+ADD Healthy_sleep_percent decimal(10, 2)
+
+
+--Healthy sleep percent=(TotalMinutesAsleep/TotalTimeInBed)*100
+UPDATE [dbo].[sleepDay_merged]
+SET Healthy_sleep_percent = (CAST(TotalMinutesAsleep AS decimal) / CAST(TotalTimeInBed AS decimal))*100
+
+
+--creating temp table with all remaing tables for normalization
+SELECT cte1.Id, cte1.Value, cte2.TotalMinutesAsleep, cte2.TotalTimeInBed,cte2.Healthy_sleep_percent, cte3.METs, cte4.TotalSteps, cte4.Calories
+INTO #temp_combined
+FROM (
+    SELECT Id, AVG(x.Value) AS Value
+    FROM (
+        SELECT Id, DateValue, AVG(Value) AS Value
+        FROM [dbo].[heartrate_seconds_merged]
+        GROUP BY Id, DateValue
+    ) x
+    GROUP BY Id
+) cte1
+JOIN (
+    SELECT Id, AVG(x.TotalMinutesAsleep) AS TotalMinutesAsleep,
+        AVG(x.TotalTimeInBed) AS TotalTimeInBed,
+		AVG(X.Healthy_sleep_percent) AS Healthy_sleep_percent
+    FROM (
+        SELECT Id, DateValue,
+            AVG(TotalMinutesAsleep) AS TotalMinutesAsleep,
+            AVG(TotalTimeInBed) AS TotalTimeInBed,
+			AVG(Healthy_sleep_percent) AS Healthy_sleep_percent
+        FROM [dbo].[sleepDay_merged]
+        GROUP BY Id, DateValue
+    ) x
+    GROUP BY Id
+) cte2 ON cte1.Id = cte2.Id
+JOIN (
+    SELECT Id, AVG(METs) AS METs
+    FROM [minuteMETsNarrow_merged]
+    GROUP BY Id
+) cte3 ON cte1.Id = cte3.Id
+JOIN (
+    SELECT Id, AVG(X.TotalSteps) AS TotalSteps,
+        AVG(X.Calories) AS Calories
+    FROM (
+        SELECT Id, ActivityDate,
+            AVG(TotalSteps) AS TotalSteps,
+            AVG(Calories) AS Calories
+        FROM [dbo].[dailyActivity_merged]
+        GROUP BY Id, ActivityDate
+    ) X
+    GROUP BY Id
+) cte4 ON cte1.Id = cte4.Id;
+
+SELECT *
+FROM #temp_combined
+
+--NORMALIATION
+DECLARE @MinValue INT, @MaxValue INT,
+        @MinTotalMinutesAsleep INT, @MaxTotalMinutesAsleep INT,
+        @MinTotalTimeInBed INT, @MaxTotalTimeInBed INT,
+        @MinMETs INT, @MaxMETs INT,
+        @MinTotalSteps INT, @MaxTotalSteps INT,
+        @MinCalories INT, @MaxCalories INT,
+		@MinHealthy INT, @MaxHealthy INT
+
+SELECT 
+    @MinValue = MIN(Value),
+    @MaxValue = MAX(Value),
+    @MinTotalMinutesAsleep = MIN(TotalMinutesAsleep),
+    @MaxTotalMinutesAsleep = MAX(TotalMinutesAsleep),
+    @MinTotalTimeInBed = MIN(TotalTimeInBed),
+    @MaxTotalTimeInBed = MAX(TotalTimeInBed),
+    @MinMETs = MIN(METs),
+    @MaxMETs = MAX(METs),
+    @MinTotalSteps = MIN(TotalSteps),
+    @MaxTotalSteps = MAX(TotalSteps),
+    @MinCalories = MIN(Calories),
+    @MaxCalories = MAX(Calories),
+	@MinHealthy =MIN(Healthy_sleep_percent),
+	@MaxHealthy =MAX(Healthy_sleep_percent)
+FROM #temp_combined;
+
+
+
+SELECT Id,
+    (Value - @MinValue) / CAST((@MaxValue - @MinValue) AS FLOAT) AS Value,
+    (TotalMinutesAsleep - @MinTotalMinutesAsleep) / CAST((@MaxTotalMinutesAsleep - @MinTotalMinutesAsleep) AS FLOAT) AS TotalMinutesAsleep,
+    (TotalTimeInBed - @MinTotalTimeInBed) / CAST((@MaxTotalTimeInBed - @MinTotalTimeInBed) AS FLOAT) AS TotalTimeInBed,
+    (METs - @MinMETs) / CAST((@MaxMETs - @MinMETs) AS FLOAT) AS METs,
+    (TotalSteps - @MinTotalSteps) / CAST((@MaxTotalSteps - @MinTotalSteps) AS FLOAT) AS TotalSteps,
+    (Calories - @MinCalories) / CAST((@MaxCalories - @MinCalories) AS FLOAT) AS Calories,
+	(Healthy_sleep_percent-@MinHealthy)/CAST((@MaxHealthy-@MinHealthy) AS float) AS Healthy_sleep_percent
+FROM #temp_combined;
+
+
+--Mets score and total steps were corelated.
+
+
+SELECT *
+FROM [dbo].[weightLogInfo_merged]
+
+SELECT Id,DateValue,AVG(WeightKg) WeightKg,AVG(BMI) BMI
+FROM [dbo].[weightLogInfo_merged]
+GROUP BY Id,DateValue
+ORDER BY Id
+
+--combining heart,sleep,weight table for normalization
+SELECT *
+FROM [dbo].[heartrate_seconds_merged]
+
+WITH Heart AS (
+    SELECT Id AS HeartId, SUM(X.Value) Value
+    FROM (
+        SELECT Id, DateValue, SUM(Value) Value
+        FROM [dbo].[heartrate_seconds_merged]
+        GROUP BY Id, DateValue
+    ) X
+    GROUP BY Id
+),
+Wight AS (
+    SELECT Id AS WeightId, SUM(X.WeightKg) WeightKg, SUM(X.BMI) BMI
+    FROM (
+        SELECT Id, DateValue, SUM(WeightKg) WeightKg, SUM(BMI) BMI
+        FROM [dbo].[weightLogInfo_merged]
+        GROUP BY Id, DateValue
+    ) X
+    GROUP BY Id
+),
+Sleep AS (
+    SELECT Id AS SleepId, SUM(X.Healthy_sleep_percent) AS Healthy_sleep_percent
+    FROM (
+        SELECT Id, DateValue, SUM(Healthy_sleep_percent) AS Healthy_sleep_percent
+        FROM [dbo].[sleepDay_merged]
+        GROUP BY Id, DateValue
+    ) X
+    GROUP BY Id
+),
+Combination_table AS (
+    SELECT *
+    FROM Heart H
+    JOIN Wight W ON H.HeartId = W.WeightId
+    JOIN Sleep S ON H.HeartId = S.SleepId
+)
+
+SELECT C.HeartId,
+    (H.Value - (SELECT MIN(Value) FROM Combination_table)) / 
+        ((SELECT MAX(Value) FROM Combination_table) - (SELECT MIN(Value) FROM Combination_table)) AS Normalized_Heart_Value,
+    (W.WeightKg - (SELECT MIN(WeightKg) FROM Combination_table)) / 
+        ((SELECT MAX(WeightKg) FROM Combination_table) - (SELECT MIN(WeightKg) FROM Combination_table)) AS Normalized_Weight,
+    (W.BMI - (SELECT MIN(BMI) FROM Combination_table)) / 
+        ((SELECT MAX(BMI) FROM Combination_table) - (SELECT MIN(BMI) FROM Combination_table)) AS Normalized_BMI,
+    (S.Healthy_sleep_percent - (SELECT MIN(Healthy_sleep_percent) FROM Combination_table)) / 
+        ((SELECT MAX(Healthy_sleep_percent) FROM Combination_table) - (SELECT MIN(Healthy_sleep_percent) FROM Combination_table)) AS Normalized_Healthy_Sleep_Percent
+FROM Combination_table C
+JOIN Heart H ON C.HeartId = H.HeartId
+JOIN Wight W ON C.WeightId = W.WeightId
+JOIN Sleep S ON C.SleepId = S.SleepId;
+
+
+SELECT *
+FROM [dbo].[dailyActivity_merged]
+
+--creating view for activity table
+
+CREATE VIEW Activity_view
+AS
+SELECT X.Id,SUM(X.TotalSteps) TotalSteps,
+SUM(X.VeryActiveDistance) VeryActiveDistance,
+SUM(X.ModeratelyActiveDistance) ModeratelyActiveDistance,
+SUM(X.LightActiveDistance) LightActiveDistance,
+SUM(X.VeryActiveMinutes) VeryActiveMinutes,
+SUM(X.FairlyActiveMinutes) FairlyActiveMinutes,
+SUM(X.LightlyActiveMinutes) LightlyActiveMinutes,
+SUM(X.Calories) Calories,
+SUM(X.SedentaryMinutes) SedentaryMinutes
+FROM (SELECT Id,ActivityDate,
+SUM(TotalSteps) TotalSteps,
+SUM(VeryActiveDistance) VeryActiveDistance,
+SUM(ModeratelyActiveDistance) ModeratelyActiveDistance,
+SUM(LightActiveDistance) LightActiveDistance,
+SUM(VeryActiveMinutes) VeryActiveMinutes,
+SUM(FairlyActiveMinutes) FairlyActiveMinutes,
+SUM(LightlyActiveMinutes) LightlyActiveMinutes,
+SUM(Calories) Calories,
+SUM(SedentaryMinutes) SedentaryMinutes
+FROM dailyActivity_merged
+GROUP BY Id,ActivityDate) X
+GROUP BY Id;
+
+  
+--Declaring variables for Normalization by Min-Max method
+DECLARE @MinTotalSteps FLOAT, @MaxTotalSteps FLOAT,
+        @MinVeryActiveDistance FLOAT, @MaxVeryActiveDistance FLOAT,
+        @MinModeratelyActiveDistance FLOAT, @MaxModeratelyActiveDistance FLOAT,
+        @MinLightActiveDistance FLOAT, @MaxLightActiveDistance FLOAT,
+        @MinVeryActiveMinutes FLOAT, @MaxVeryActiveMinutes FLOAT,
+        @MinFairlyActiveMinutes FLOAT, @MaxFairlyActiveMinutes FLOAT,
+        @MinLightlyActiveMinutes FLOAT, @MaxLightlyActiveMinutes FLOAT,
+        @MinCalories FLOAT, @MaxCalories FLOAT,
+        @MinSedentaryMinutes FLOAT, @MaxSedentaryMinutes FLOAT;
+
+SELECT
+    @MinTotalSteps = MIN(TotalSteps),
+    @MaxTotalSteps = MAX(TotalSteps),
+    @MinVeryActiveDistance = MIN(VeryActiveDistance),
+    @MaxVeryActiveDistance = MAX(VeryActiveDistance),
+    @MinModeratelyActiveDistance = MIN(ModeratelyActiveDistance),
+    @MaxModeratelyActiveDistance = MAX(ModeratelyActiveDistance),
+    @MinLightActiveDistance = MIN(LightActiveDistance),
+    @MaxLightActiveDistance = MAX(LightActiveDistance),
+    @MinVeryActiveMinutes = MIN(VeryActiveMinutes),
+    @MaxVeryActiveMinutes = MAX(VeryActiveMinutes),
+    @MinFairlyActiveMinutes = MIN(FairlyActiveMinutes),
+    @MaxFairlyActiveMinutes = MAX(FairlyActiveMinutes),
+    @MinLightlyActiveMinutes = MIN(LightlyActiveMinutes),
+    @MaxLightlyActiveMinutes = MAX(LightlyActiveMinutes),
+    @MinCalories = MIN(Calories),
+    @MaxCalories = MAX(Calories),
+    @MinSedentaryMinutes = MIN(SedentaryMinutes),
+    @MaxSedentaryMinutes = MAX(SedentaryMinutes)
+FROM [dbo].[Activity_view];
+
+SELECT
+    Id,
+    (TotalSteps - @MinTotalSteps) / (@MaxTotalSteps - @MinTotalSteps) AS NormalizedTotalSteps,
+    (VeryActiveDistance - @MinVeryActiveDistance) / (@MaxVeryActiveDistance - @MinVeryActiveDistance) AS NormalizedVeryActiveDistance,
+    (ModeratelyActiveDistance - @MinModeratelyActiveDistance) / (@MaxModeratelyActiveDistance - @MinModeratelyActiveDistance) AS NormalizedModeratelyActiveDistance,
+    (LightActiveDistance - @MinLightActiveDistance) / (@MaxLightActiveDistance - @MinLightActiveDistance) AS NormalizedLightActiveDistance,
+    (VeryActiveMinutes - @MinVeryActiveMinutes) / (@MaxVeryActiveMinutes - @MinVeryActiveMinutes) AS NormalizedVeryActiveMinutes,
+    (FairlyActiveMinutes - @MinFairlyActiveMinutes) / (@MaxFairlyActiveMinutes - @MinFairlyActiveMinutes) AS NormalizedFairlyActiveMinutes,
+    (LightlyActiveMinutes - @MinLightlyActiveMinutes) / (@MaxLightlyActiveMinutes - @MinLightlyActiveMinutes) AS NormalizedLightlyActiveMinutes,
+    (Calories - @MinCalories) / (@MaxCalories - @MinCalories) AS NormalizedCalories,
+    (SedentaryMinutes - @MinSedentaryMinutes) / (@MaxSedentaryMinutes - @MinSedentaryMinutes) AS NormalizedSedentaryMinutes
+FROM [dbo].[Activity_view];
+
+----
+SELECT *
+FROM [minuteSleep_merged];
+
+CREATE VIEW minuteSleep_VIEW
+AS
+SELECT Id,SUM(X.value) sleep
+FROM (SELECT Id,DATEVALUE,SUM(value) value
+FROM [dbo].[minuteSleep_merged]
+GROUP BY Id,DATEVALUE) X
+GROUP BY Id;
+
+--INTENSISITY IS BIT data type
+CREATE VIEW minuteIntensities_VIEW
+AS
+SELECT Id,SUM(TotalIntensity) TotalIntensity
+FROM
+(SELECT Id, datevalue, SUM(CAST(Intensity AS INT)) AS TotalIntensity
+FROM [minuteIntensitiesNarrow_merged]
+GROUP BY Id, datevalue) X                                                                                                                                                                                                                    
+GROUP BY Id;
+
+
+CREATE VIEW minuteCalories_VIEW
+AS
+SELECT X.Id, SUM(X.Calories) Calories
+FROM (SELECT Id,DateValue,SUM(Calories) Calories
+FROM [minuteCaloriesNarrow_merged]
+GROUP BY Id,DateValue) X
+GROUP BY Id;
+
+
+CREATE VIEW weightLogInfo_VIEW
+AS
+SELECT X.Id,AVG(X.WeightKg) WeightKg,AVG(X.BMI) BMI
+FROM (SELECT Id,DateValue,AVG(WeightKg) WeightKg,AVG(BMI) BMI
+FROM [weightLogInfo_merged]
+GROUP BY Id,DateValue) X
+GROUP BY Id;
+
+SELECT *
+FROM [dbo].[Heart_rate_records] H JOIN [dbo].[minuteCalories_VIEW] C
+ON H.Id=C.Id
+JOIN minuteIntensities_VIEW I ON H.Id=I.Id
+JOIN [dbo].[minuteSleep_VIEW] S ON H.Id=S.Id
+JOIN [dbo].[weightLogInfo_VIEW] W ON H.Id=W.Id
+
+
+
+
+--creating BMI view
+CREATE VIEW BMI_VIEW 
+AS 
+SELECT A.Id,TotalSteps,VeryActiveDistance,ModeratelyActiveDistance,LightActiveDistance,
+VeryActiveMinutes,FairlyActiveMinutes,LightlyActiveMinutes,Calories,SedentaryMinutes,weightkg,
+    CASE 
+        WHEN BMI BETWEEN 18 AND 25 THEN 0 
+        ELSE 1 
+    END AS BMI_Health
+FROM [dbo].[ACtivity_view] A
+JOIN [weightLogInfo_VIEW] W ON W.Id = A.Id;
+
+SELECT TotalSteps,VeryActiveDistance,ModeratelyActiveDistance,LightActiveDistance,VeryActiveMinutes,FairlyActiveMinutes,
+LightlyActiveMinutes,Calories,SedentaryMinutes,BMI_Health
+FROM BMI_VIEW
+
+
+SELECT *
+from [dbo].[BMI_VIEW]
+
+
+SELECT H.Id
+FROM [dbo].[Heart_rate_records] H
+INNER JOIN [dbo].[minuteSleep_merged] S ON S.Id = H.Id
+INNER JOIN [dbo].[minuteCaloriesNarrow_merged] C ON C.Id = H.Id
+INNER JOIN [dbo].[minuteIntensitiesNarrow_merged] I ON I.Id = H.Id
+INNER JOIN [dbo].[weightLogInfo_merged] W ON W.Id = H.Id;
+
+
+
+SELECT id,
+    (TotalSteps - min_totalsteps) / (max_totalsteps - min_totalsteps) AS NormalizedTotalSteps,
+    (VeryActiveDistance - min_veryactivedistance) / (max_veryactivedistance - min_veryactivedistance) AS NormalizedVeryActiveDistance,
+    (ModeratelyActiveDistance - min_moderatelyactivedistance) / (max_moderatelyactivedistance - min_moderatelyactivedistance) AS NormalizedModeratelyActiveDistance,
+    (LightActiveDistance - min_lightactivedistance) / (max_lightactivedistance - min_lightactivedistance) AS NormalizedLightActiveDistance,
+    (VeryActiveMinutes - min_veryactiveminutes) / (max_veryactiveminutes - min_veryactiveminutes) AS NormalizedVeryActiveMinutes,
+    (FairlyActiveMinutes - min_fairlyactiveminutes) / (max_fairlyactiveminutes - min_fairlyactiveminutes) AS NormalizedFairlyActiveMinutes,
+    (LightlyActiveMinutes - min_lightlyactiveminutes) / (max_lightlyactiveminutes - min_lightlyactiveminutes) AS NormalizedLightlyActiveMinutes,
+    (Calories - min_calories) / (max_calories - min_calories) AS NormalizedCalories,
+    (SedentaryMinutes - min_sedentaryminutes) / (max_sedentaryminutes - min_sedentaryminutes) AS NormalizedSedentaryMinutes,
+    (BMI_Health - min_bmi_health) / (max_bmi_health - min_bmi_health) AS NormalizedBMI_Health
+FROM
+    BMI_VIEW,
+    (SELECT
+        MIN(TotalSteps) AS min_totalsteps,
+        MAX(TotalSteps) AS max_totalsteps,
+        MIN(VeryActiveDistance) AS min_veryactivedistance,
+        MAX(VeryActiveDistance) AS max_veryactivedistance,
+        MIN(ModeratelyActiveDistance) AS min_moderatelyactivedistance,
+        MAX(ModeratelyActiveDistance) AS max_moderatelyactivedistance,
+        MIN(LightActiveDistance) AS min_lightactivedistance,
+        MAX(LightActiveDistance) AS max_lightactivedistance,
+        MIN(VeryActiveMinutes) AS min_veryactiveminutes,
+        MAX(VeryActiveMinutes) AS max_veryactiveminutes,
+        MIN(FairlyActiveMinutes) AS min_fairlyactiveminutes,
+        MAX(FairlyActiveMinutes) AS max_fairlyactiveminutes,
+        MIN(LightlyActiveMinutes) AS min_lightlyactiveminutes,
+        MAX(LightlyActiveMinutes) AS max_lightlyactiveminutes,
+        MIN(Calories) AS min_calories,
+        MAX(Calories) AS max_calories,
+        MIN(SedentaryMinutes) AS min_sedentaryminutes,
+        MAX(SedentaryMinutes) AS max_sedentaryminutes,
+        MIN(BMI_Health) AS min_bmi_health,
+        MAX(BMI_Health) AS max_bmi_health
+    FROM BMI_VIEW) AS minmax;
