@@ -1,0 +1,25 @@
+from bs4 import BeautifulSoup
+import requests
+import re
+from csv import writer
+baseurl='https://www.hindawi.com'
+productlinks=[]
+with open('Emails_scrap2.csv','w',newline='',encoding='utf8') as f:
+    thewriter=writer(f)
+    header=['Email']
+    thewriter.writerow(header)
+
+    for x in range(0,3):
+        page=requests.get(f'https://www.hindawi.com/search/all/ophthalmology/page/{x}/')
+        soup=BeautifulSoup(page.content, 'lxml')
+        productlist=soup.find_all('div', class_="ant-card ant-card-bordered article-card")
+        for item in productlist:
+            for link in item.find_all('a', href=True):
+                productlinks.append(baseurl+link['href'])
+        for url in productlinks:
+            page=requests.get(url)
+            soup = BeautifulSoup(page.content, 'lxml')
+            lst = soup.find('span', class_="articleHeader__authors_author")
+            info=[lst]
+            thewriter.writerow(info)
+
